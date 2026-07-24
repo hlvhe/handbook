@@ -192,9 +192,14 @@ Returns an array of available rooms and details of it:
     - `role`
     - `displayName`
     - `userContext`
+    - `isJigasi`
+    - `isJibri`
 
 ```javascript
-api.getRoomsInfo().then(rooms => {
+/**
+* @param {boolean} includeHidden - Whether to include hidden participants (e.g. Jibri, transcriber) in the response. Defaults to false.
+*/
+api.getRoomsInfo(includeHidden).then(rooms => {
     ... // see response example structure
 })
 ```
@@ -216,7 +221,9 @@ Response example structure:
           "id": "bbbbbb",
           "userContext": {
             "id": "google-oauth2|12345678901234567890"
-          }
+          },
+          "isJigasi": false,
+          "isJibri": true
         },
         {
           "jid": "room_name@conference.jitsi/cccccc",
@@ -225,7 +232,9 @@ Response example structure:
           "id": "cccccc",
           "userContext": {
             "id": "400e45d607256777df4e0f3a6a447901"
-          }
+          },
+          "isJigasi": true,
+          "isJibri": false
         }
       ]
     },
@@ -250,7 +259,7 @@ Response example structure:
 
 ### getSessionId
 
-Returns the meting's unique Id (`sessionId`). 
+Returns the meting's unique Id (`sessionId`).
 Please note that the `sessionId` is not available when in prejoin screen and it's not guaranteed to be available immediately after joining - in which cases it will be empty.
 
 ```javascript
@@ -262,7 +271,7 @@ api.getSessionId().then(sessionId => {
 
 ### getSharedDocumentUrl
 
-Returns the meeting's unique etherpad shared document url (`sharedDocumentUrl`). 
+Returns the meeting's unique etherpad shared document url (`sharedDocumentUrl`).
 Please note that the `sharedDocumentUrl` is not available when in prejoin screen and it's not guaranteed to be available immediately after joining - in which cases it will be empty.
 
 ```javascript
