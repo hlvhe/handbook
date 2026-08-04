@@ -776,3 +776,20 @@ api.executeCommand('setMeetingTimer', {
 The timer is enabled by default and renders nothing until a duration is known
 (from this command or from calendar sync). To hide it entirely — even when a
 duration is available — set `configOverwrite.timeTimer = { enabled: false }`.
+
+### setParticipantProperties
+
+Sets properties for the local participant.
+
+```javascript
+api.executeCommand('setParticipantProperties', properties: Object);
+```
+
+For example, the properties Jibri sets to describe a recording session:
+
+```javascript
+api.executeCommand('setParticipantProperties', {
+    mode: 'file',
+    session_id: 'abc123'
+});
+```
