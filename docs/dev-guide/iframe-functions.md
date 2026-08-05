@@ -194,6 +194,8 @@ Returns an array of available rooms and details of it:
     - `userContext`
     - `isJigasi`
     - `isJibri`
+    - `audioMuted`
+    - `videoMuted`
 
 ```javascript
 /**
@@ -223,7 +225,9 @@ Response example structure:
             "id": "google-oauth2|12345678901234567890"
           },
           "isJigasi": false,
-          "isJibri": true
+          "isJibri": true,
+          "audioMuted": true,
+          "videoMuted": true
         },
         {
           "jid": "room_name@conference.jitsi/cccccc",
@@ -234,7 +238,9 @@ Response example structure:
             "id": "400e45d607256777df4e0f3a6a447901"
           },
           "isJigasi": true,
-          "isJibri": false
+          "isJibri": false,
+          "audioMuted": false,
+          "videoMuted": false
         }
       ]
     },
